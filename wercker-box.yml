@@ -1,11 +1,11 @@
 name: wercker-vagrant
-version: 0.0.1
-inherits: wercker/ubuntu12.04-ruby2.0.0@1.0.0
+version: 0.0.2
+inherits: wercker/ruby@1.0.0
 type: main
 platform: ubuntu@12.04
 packages:
-  - ruby@2.0.0
-  - vagrant@1.6.2
+  - ruby
+  - vagrant@1.6.3
 keywords:
   - ruby
   - vagrant
@@ -16,3 +16,4 @@ script: |
   sudo dpkg -i vagrant_1.6.3_x86_64.deb
   vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
   vagrant plugin install vagrant-omnibus
+  sudo gem install bundler
