@@ -1,5 +1,5 @@
-name: wercker-vagrant
-version: 0.0.2
+name: vagrant
+version: 0.0.3
 inherits: wercker/ruby@1.0.0
 type: main
 platform: ubuntu@12.04
@@ -9,11 +9,13 @@ packages:
 keywords:
   - ruby
   - vagrant
+no-response-timeout: 25
 script: |
   sudo apt-get update
-  sudo apt-get install -y libgecode-dev libgecode30
+  sudo apt-get install -y build-essential autoconf
+  sudo gem install dep-selector-libgecode
+  sudo gem install berkshelf
   wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
   sudo dpkg -i vagrant_1.6.3_x86_64.deb
   vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
   vagrant plugin install vagrant-omnibus
-  sudo gem install bundler
